@@ -1,0 +1,25 @@
+{
+  "name": "directi-game-app",
+  "version": "1.0.0",
+  "description": "A full stack project on nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/805bluebell/directi-game-app.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Pankaj Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/805bluebell/directi-game-app/issues"
+  },
+  "homepage": "https://github.com/805bluebell/directi-game-app#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
