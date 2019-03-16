@@ -16,7 +16,7 @@ app.use('/', router);
 
 
 //to serve static files
-app.use(express.static('/'))
+app.use(express.static('public'))
 
 
 
