@@ -15,8 +15,8 @@ router.get('/',function(req,res){
 app.use('/', router);
 
 
-
-
+//to serve static files
+app.use(express.static('/'))
 
 
 
