@@ -1,10 +1,5 @@
 let game;
-var score = 0;
-var text;
-var flag = false;
 
-
- 
 // global game options
 let gameOptions = {
     platformStartSpeed: 350,
@@ -15,17 +10,17 @@ let gameOptions = {
     playerStartPosition: 200,
     jumps: 2
 }
- 
+
 window.onload = function() {
- 
+
     // object containing configuration options
     let gameConfig = {
         type: Phaser.AUTO,
-        width: 750,
+        width: 1334,
         height: 750,
         scene: playGame,
         backgroundColor: 0x444444,
- 
+
         // physics settings
         physics: {
             default: "arcade"
@@ -37,18 +32,6 @@ window.onload = function() {
     window.addEventListener("resize", resize, false);
 }
 
-
-
-
-
-
-
-
-
-
-
-
- 
 // playGame scene
 class playGame extends Phaser.Scene{
     constructor(){
@@ -57,86 +40,44 @@ class playGame extends Phaser.Scene{
     preload(){
         this.load.image("platform", "platform.png");
         this.load.image("player", "player.png");
-        this.load.image('startButton', 'startButton.png');
     }
-    //var button;
     create(){
-        //Button data
-        //var button = game.add.button(95, 400, 'button', actionOnClick, this, 2, 1, 0);
-        
-        
-        //Sets score
-        //this.data.set('score', this.score);
 
-       
-        var startButton = this.add.image(300, 300, 'startButton');
-        //  Make them all input enabled
-        startButton.setInteractive();
-
-        //  The images will dispatch a 'clicked' event when they are clicked on
-        startButton.on('clicked', clickHandler, this);
-        //  If a Game Object is clicked on, this event is fired.
-    
-        
-        
-        
-        text = this.add.text(100, 100, '', { font: '32px Courier', fill: '#00ff00' });
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         // group with all active platforms.
         this.platformGroup = this.add.group({
- 
+
             // once a platform is removed, it's added to the pool
             removeCallback: function(platform){
                 platform.scene.platformPool.add(platform)
             }
         });
- 
+
         // pool
         this.platformPool = this.add.group({
- 
+
             // once a platform is removed from the pool, it's added to the active platforms group
             removeCallback: function(platform){
                 platform.scene.platformGroup.add(platform)
             }
         });
- 
+
         // number of consecutive jumps made by the player
         this.playerJumps = 0;
- 
+
         // adding a platform to the game, the arguments are platform width and x position
         this.addPlatform(game.config.width, game.config.width / 2);
-        
-        //Add score on addition of each platform
-        this.score++;
- 
+
         // adding the player;
         this.player = this.physics.add.sprite(gameOptions.playerStartPosition, game.config.height / 2, "player");
         this.player.setGravityY(gameOptions.playerGravity);
- 
+
         // setting collisions between the player and the platform group
         this.physics.add.collider(this.player, this.platformGroup);
- 
+
         // checking for input
         this.input.on("pointerdown", this.jump, this);
-        
     }
- 
+
     // the core of the script: platform are added from the pool or created on the fly
     addPlatform(platformWidth, posX){
         let platform;
@@ -156,7 +97,7 @@ class playGame extends Phaser.Scene{
         platform.displayWidth = platformWidth;
         this.nextPlatformDistance = Phaser.Math.Between(gameOptions.spawnRange[0], gameOptions.spawnRange[1]);
     }
- 
+
     // the player jumps when on the ground, or once in the air as long as there are jumps left and the first jump was on the ground
     jump(){
         if(this.player.body.touching.down || (this.playerJumps > 0 && this.playerJumps < gameOptions.jumps)){
@@ -164,29 +105,17 @@ class playGame extends Phaser.Scene{
                 this.playerJumps = 0;
             }
             this.player.setVelocityY(gameOptions.jumpForce * -1);
-            this.playerJumps++;
-            
+            this.playerJumps ++;
         }
     }
     update(){
- 
+
         // game over
         if(this.player.y > game.config.height){
-            this.scene.pause("PlayGame");
-            
-            if (flag == true) {
-                this.scene.start("PlayGame");
-            }
-            
-            
-            
-            
-            
-            
-            
+            this.scene.start("PlayGame");
         }
         this.player.x = gameOptions.playerStartPosition;
- 
+
         // recycling platforms
         let minDistance = game.config.width;
         this.platformGroup.getChildren().forEach(function(platform){
@@ -197,42 +126,14 @@ class playGame extends Phaser.Scene{
                 this.platformGroup.remove(platform);
             }
         }, this);
- 
+
         // adding new platforms
         if(minDistance > this.nextPlatformDistance){
             var nextPlatformWidth = Phaser.Math.Between(gameOptions.platformSizeRange[0], gameOptions.platformSizeRange[1]);
             this.addPlatform(nextPlatformWidth, game.config.width + nextPlatformWidth / 2);
-            
-            //Updating scores
-            score++;
-            console.log(this.score);
-            document.getElementById("demo").innerHTML =score;
-            //this.data.set('score', this.score);
-            text.setText(
-                'Score: ' + score
-            );
-            
-            
-            
-            
-            
-            
         }
-        
-        
     }
 };
-
-function clickHandler (startButton)
-{
-    flag = true;
-
-    /*startButton.off('clicked', clickHandler);
-    startButton.input.enabled = true;
-    startButton.setVisible(false);*/
-}
-
-
 function resize(){
     let canvas = document.querySelector("canvas");
     let windowWidth = window.innerWidth;
@@ -248,4 +149,3 @@ function resize(){
         canvas.style.height = windowHeight + "px";
     }
 }
-
