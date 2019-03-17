@@ -63,9 +63,9 @@ function checkLoginState() {
 }
 
 FB.api('/me', function(response) {
-    /*if(response) {
+    if(response) {
         console.log(JSON.stringify(response));
-    }*/
+    }
      {
         console.log("Can't get username");
     }
@@ -90,7 +90,7 @@ FB.api('/me', function(response) {
         <br>
         <div></div>
         <button type="button" onclick="loadDoc()">Request data</button>
-        <button type="button" onclick="FB.api()">Check FB</button>
+        <button type="button" onclick="FB.api(); checkLoginState()">Check FB</button>
 
     <p id="demo"></p>
         
