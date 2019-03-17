@@ -57,30 +57,23 @@ function checkLoginState() {
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
   });
+  if (response.status === 'connected') {
+    console.log(response.authResponse.accessToken);
+  }
 }
 
+FB.api('/me', function(response) {
+    console.log(JSON.stringify(response));
+});
+
 
 </script>
 
 
-<fb:login-button 
-  scope="public_profile,email"
-  onlogin="checkLoginState();">
-</fb:login-button>
 
 
 
 
-<div id="social-login-container">Another one</div>
-<script type="text/javascript">
-    var _oneall = _oneall || [];
-    _oneall.push(
-        ['social_login', 'set_providers', ['facebook', 'twitter', 'pinterest', 'dribbble', 'google', 'steam', 'vimeo', 'twitch']],
-        ['social_login', 'set_callback_uri', window.location.href],
-        ['social_login', 'set_custom_css_uri', 'https://secure.oneallcdn.com/css/api/themes/flat_w188_h32_wc_v1.css'],
-        ['social_login', 'do_render_ui', 'social-login-container']
-    );
-</script>
 
 
   
@@ -90,7 +83,9 @@ function checkLoginState() {
     
         <h3>Score:<span id="scoreValue"> 0</span></h3>
         <br>
+        <div></div>
         <button type="button" onclick="loadDoc()">Request data</button>
+        <button type="button" onclick="FB.api()">Check FB</button>
 
     <p id="demo"></p>
         
