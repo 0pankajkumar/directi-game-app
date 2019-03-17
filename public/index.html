@@ -63,7 +63,12 @@ function checkLoginState() {
 }
 
 FB.api('/me', function(response) {
-    console.log((response));
+    if(response) {
+        console.log(JSON.stringify(response));
+    }
+    else {
+        console.log("Can't get username");
+    }
 });
 
 
