@@ -86,7 +86,7 @@ class playGame extends Phaser.Scene{
                 fill: '#0f0'
             })
             .setInteractive()
-            .on('pointerdown', () => this.scene.sleep("PlayGame"));
+            .on('pointerdown', () => this.scene.pause("PlayGame"));
         
         
         
