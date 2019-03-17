@@ -61,26 +61,39 @@ class playGame extends Phaser.Scene{
     }
     //var button;
     create(){
-        //Button data
-        //var button = game.add.button(95, 400, 'button', actionOnClick, this, 2, 1, 0);
-        
-        
-        //Sets score
-        //this.data.set('score', this.score);
-
-       
-        var startButton = this.add.image(100, 300, 'startButton');
+        //var startButton = this.add.image(100, 300, 'startButton');
         //  Make them all input enabled
-        startButton.setInteractive();
+        //startButton.setInteractive();
 
         //  The images will dispatch a 'clicked' event when they are clicked on
-        startButton.on('clicked', clickHandler, this);
+        //startButton.on('clicked', clickHandler, this);
         //  If a Game Object is clicked on, this event is fired.
     
+       
+        
+        //For Play button
+        const clickButton = this.add.text(500, 200, 'Play!', {
+                font: '32px Courier',
+                fill: '#0f0'
+            })
+            .setInteractive()
+            .on('pointerdown', () => this.scene.start("PlayGame"));
+        
+        //For Pause button
+        
+        const clickButton2 = this.add.text(500, 300, 'Pause', {
+                font: '32px Courier',
+                fill: '#0f0'
+            })
+            .setInteractive()
+            .on('pointerdown', () => this.scene.sleep("PlayGame"));
         
         
         
-        text = this.add.text(100, 100, '', { font: '32px Courier', fill: '#00ff00' });
+        
+        
+        //For Platforms gone area
+        text = this.add.text(100, 75, '', { font: '32px Courier', fill: '#00ff00' });
 
         
         
@@ -136,6 +149,9 @@ class playGame extends Phaser.Scene{
         this.input.on("pointerdown", this.jump, this);
         
     }
+    
+    
+    
  
     // the core of the script: platform are added from the pool or created on the fly
     addPlatform(platformWidth, posX){
@@ -172,19 +188,15 @@ class playGame extends Phaser.Scene{
  
         // game over
         if(this.player.y > game.config.height){
-            this.scene.pause("PlayGame");
+            //this.scene.pause("PlayGame");
             
-            if (flag == true) {
-                this.scene.start("PlayGame");
-            }
-            
-            
-            
-            
-            
-            
-            
+            score = 0;
+          
         }
+        else {
+            let temp = score;
+            document.getElementById("scoreValue").innerHTML =temp;
+        }    
         this.player.x = gameOptions.playerStartPosition;
  
         // recycling platforms
@@ -206,10 +218,10 @@ class playGame extends Phaser.Scene{
             //Updating scores
             score++;
             console.log(this.score);
-            document.getElementById("scoreValue").innerHTML =score;
+            
             //this.data.set('score', this.score);
             text.setText(
-                'Score: ' + score
+                'Platforms gone: ' + score
             );
             
             
