@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
     <!-- Custom styles -->
-    <link href="css/landing-page.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
     <style type="text/css">
         
     </style>
@@ -18,7 +18,7 @@
 
 <body>
 
-    <!Google signin>
+    <!--Google signin-->
     <div class="g-signin2" data-onsuccess="onSignIn">
         <button type="button" onclick="signIn()">Sign In</button>
     </div>
@@ -52,9 +52,9 @@
 
 
 
-
-    <div id="fb-root">Fb</div <! Social login>
-    >
+    <!-- Social login-->
+    <div id="fb-root">Fb</div 
+    
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2&appId=1305155906276004&autoLogAppEvents=1"></script>
     <script>
     var fbid;
@@ -126,7 +126,7 @@
     <button type="button" onclick="FB.api(); checkLoginState()">Check FB</button>
     <p id="demo"></p>
 
-    <!Script to give GET request to server>
+    <!--Script to give GET request to server-->
     <script>
         function loadDoc() {
             var xhttp = new XMLHttpRequest();
