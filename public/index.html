@@ -20,8 +20,76 @@
         <script src = "game.js"></script>
     </head>
 	<body>
-        <h3>Score:<span id="demo"> 0</span></h3>
-        
+ 
+
+
+
+ <! Social login>
+<div id="fb-root">Fb</div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2&appId=1305155906276004&autoLogAppEvents=1"></script>
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1305155906276004',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v3.2'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+   
+   FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
+
+
+</script>
+
+
+<fb:login-button 
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
+
+
+
+
+<div id="social-login-container">Another one</div>
+<script type="text/javascript">
+    var _oneall = _oneall || [];
+    _oneall.push(
+        ['social_login', 'set_providers', ['facebook', 'twitter', 'pinterest', 'dribbble', 'google', 'steam', 'vimeo', 'twitch']],
+        ['social_login', 'set_callback_uri', window.location.href],
+        ['social_login', 'set_custom_css_uri', 'https://secure.oneallcdn.com/css/api/themes/flat_w188_h32_wc_v1.css'],
+        ['social_login', 'do_render_ui', 'social-login-container']
+    );
+</script>
+
+
+  
+    
+    
+    <div class="fb-login-button" data-size="large" data-button-type="login_with" data-auto-logout-link="true" data-use-continue-as="true">Fb</div>
+    
+        <h3>Score:<span id="scoreValue"> 0</span></h3>
+        <br>
         <button type="button" onclick="loadDoc()">Request data</button>
 
     <p id="demo"></p>

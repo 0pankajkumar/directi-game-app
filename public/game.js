@@ -69,7 +69,7 @@ class playGame extends Phaser.Scene{
         //this.data.set('score', this.score);
 
        
-        var startButton = this.add.image(300, 300, 'startButton');
+        var startButton = this.add.image(100, 300, 'startButton');
         //  Make them all input enabled
         startButton.setInteractive();
 
@@ -206,7 +206,7 @@ class playGame extends Phaser.Scene{
             //Updating scores
             score++;
             console.log(this.score);
-            document.getElementById("demo").innerHTML =score;
+            document.getElementById("scoreValue").innerHTML =score;
             //this.data.set('score', this.score);
             text.setText(
                 'Score: ' + score
