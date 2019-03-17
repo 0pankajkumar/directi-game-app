@@ -5,168 +5,54 @@
     <meta name="google-signin-client_id" content="660289313316-3gs0lge9kmgmtbk3urpbf2clphj4brdg.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://apis.google.com/js/api.js" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
+    <!-- Custom styles -->
+    <link href="style.css" rel="stylesheet">
     
-    <style type="text/css">
-        body {
-            background: #white;
-            margin: 10px;
-        }
-        
-        canvas {
-            display: block;
-            margin: 0;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        
-        * {
-            box-sizing: border-box;
-        }
-        /* Create two equal columns that floats next to each other */
-        
-        .column {
-            float: left;
-            width: 50%;
-            padding: 10px;
-            /* Should be removed. Only for demonstration */
-        }
-        /* Clear floats after the columns */
-        
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-    </style>
     <script src="phaser.min.js"></script>
     <script src="game.js"></script>
+    <script src="socialScripts.js"></script>
+    
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2&appId=1305155906276004&autoLogAppEvents=1"></script>
 </head>
 
 <body>
 
-    <!Google signin>
+    <!-- Google signin-->
     <div class="g-signin2" data-onsuccess="onSignIn">
         <button type="button" onclick="signIn()">Sign In</button>
     </div>
     
     <a href="#" onclick="signOut();">Sign out</a>
-<script>
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  }
 
-        function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-        }
-
-    </script>
-
-
-
-
-
-
-
-
-
-
-
-
-    <div id="fb-root">Fb</div <! Social login>
-    >
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2&appId=1305155906276004&autoLogAppEvents=1"></script>
-    <script>
-    var fbid;
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId: '1305155906276004',
-                cookie: true,
-                xfbml: true,
-                version: 'v3.2'
-            });
-
-            FB.AppEvents.logPageView();
-
-        };
-
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {
-                return;
-            }
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-
-        var fbid2 = FB.getLoginStatus(function(response) {
-            statusChangeCallback(response);
-        });
-
-        function checkLoginState() {
-            FB.getLoginStatus(function(response) {
-                statusChangeCallback(response);
-            });
-            if (response.status === 'connected') {
-                console.log(response.authResponse.accessToken);
-            }
-            
-            document.getElementById("checkingFBstatus").innerHTML = fbid2;
-        }
-
-        FB.api('/me', function(response) {
-            if (response) {
-                console.log(JSON.stringify(response));
-            } {
-                console.log("Can't get username");
-            }
-        });
-            
-            
-            
-            
-    </script>
     
-    
-    
+
+
+
+
+
+
+
+
+
+    <!--  Social login-->
+    <div id="fb-root">Facebook</div 
     <div class="fb-login-button" data-size="large" data-button-type="login_with" data-auto-logout-link="true" data-use-continue-as="true">Fb</div>
+    
+    
+    <!-- Display scores -->
     <h3>Score:<span id="scoreValue"> 0</span></h3>
     <br>
     
     
     
-    <div id="checkingFBstatus">FB Check</div>
-
-    
-    
-    
-    <button type="button" onclick="loadDoc()">Request data</button>
+    <button type="button" onclick="loadDoc()">Submit score</button>
     <button type="button" onclick="FB.api(); checkLoginState()">Check FB</button>
     <p id="demo"></p>
 
-    <!Script to give GET request to server>
     <script>
-        function loadDoc() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("demo").innerHTML = this.responseText;
-                }
-            };
-            xhttp.open("GET", "/checkI", true);
-            xhttp.send();
-        }
+        
     </script>
 </body>
 
