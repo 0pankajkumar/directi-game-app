@@ -6,7 +6,7 @@ const port = process.env.PORT || 5000
 const path = require('path');
 const router = express.Router();
 
-router.get('/',function(req,res){
+router.get('/index.html',function(req,res){
   res.sendFile(path.join(__dirname+'/public/index.html'));
   //__dirname : It will resolve to your project folder.
 });
@@ -20,7 +20,7 @@ app.use(express.static('public'))
 
 
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/checkI', (req, res) => res.send('Got a GET request'))
 
 app.post('/', function (req, res) {
   res.send('Got a POST request')
