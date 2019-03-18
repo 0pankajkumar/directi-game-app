@@ -72,7 +72,7 @@ class playGame extends Phaser.Scene{
        
         
         //For Play button
-        const clickButton = this.add.text(500, 200, 'Play!', {
+        const clickButton = this.add.text(500, 200, 'Play Again!', {
                 font: '32px Courier',
                 fill: '#0f0'
             })
