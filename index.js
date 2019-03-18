@@ -6,6 +6,8 @@ const port = process.env.PORT || 5000
 const path = require('path');
 const router = express.Router();
 
+var fs = require('fs')
+
 router.get('/index.html',function(req,res){
   res.sendFile(path.join(__dirname+'/public/index.html'));
   //__dirname : It will resolve to your project folder.
@@ -22,6 +24,23 @@ app.use(express.static('public'))
 
 app.get('/checkI', function (req, res) { 
     res.send(req.param('score'));
+    
+    fs.readFile('./users.json', 'utf-8', function(err, data) {
+	if (err) throw err
+
+	var arrayOfObjects = JSON.parse(data)
+	arrayOfObjects.users.push({
+		name: req.param('name'),
+		score: req.param('score')
+	})
+
+	console.log(arrayOfObjects)
+
+	fs.writeFile('./users.json', JSON.stringify(arrayOfObjects), 'utf-8', function(err) {
+		if (err) throw err
+		console.log('Done!')
+	})
+})
 })
 
 app.post('/checkI', function (req, res) {
