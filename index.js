@@ -22,7 +22,7 @@ app.use(express.static('public'))
 
 app.get('/checkI', (req, res) => res.send('Hello'))
 
-app.post('/', function (req, res) {
+app.post('/checkI', function (req, res) {
   res.send('Got a POST request')
 })
 
