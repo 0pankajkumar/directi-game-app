@@ -23,8 +23,8 @@ app.use(express.static('public'))
 
 
 app.get('/checkI', function (req, res) { 
-    res.send('Score submitted '+req.param('name'));
     
+    //Writing user data in JSON file
     fs.readFile('./users.json', 'utf-8', function(err, data) {
 	if (err) throw err
 
@@ -41,6 +41,8 @@ app.get('/checkI', function (req, res) {
 		console.log('Done!')
 	})
 })
+    res.send('Score submitted by '+req.param('name')+JSON.stringify(arrayOfObjects));
+    
 })
 
 app.post('/checkI', function (req, res) {
