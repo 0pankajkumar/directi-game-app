@@ -20,7 +20,7 @@ app.use(express.static('public'))
 
 
 
-app.get('/checkI', (req, res) => res.send(this.req.params))
+app.get('/checkI', (req, res) => res.send(req))
 
 app.post('/', function (req, res) {
   res.send('Got a POST request')
