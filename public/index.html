@@ -48,7 +48,7 @@
         type:"GET",
         cache:false,
         url:"/checkI",
-        data:document.getElementById("scoreValue").innerHTML,    // multiple data sent using ajax
+        data:{score: document.getElementById("scoreValue").innerHTML},    // multiple data sent using ajax
         success: function( result ) {
             $( "#demo" ).html( "<strong>" + result + "</strong>" );
         }
