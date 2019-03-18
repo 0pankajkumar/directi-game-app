@@ -30,7 +30,7 @@ var writeBuff;
     fs.readFile('./users.json', 'utf-8', function(err, data) {
 	if (err) throw err
 
-	arrayOfObjects = JSON.parse(data)
+	var arrayOfObjects = JSON.parse(data)
 	arrayOfObjects.users.push({
 		name: req.param('name'),
 		score: req.param('score')
