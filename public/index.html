@@ -45,7 +45,7 @@
         
               function sendData() {
         $.ajax({
-        type:"POST",
+        type:"GET",
         cache:false,
         url:"/checkI",
         data:document.getElementById("scoreValue").innerHTML,    // multiple data sent using ajax
@@ -55,7 +55,7 @@
       });
       
       if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("demo").innerHTML = this.responseText;
+                    document.getElementById("demo2").innerHTML = this.responseText;
                 }
         }  
     </script>
@@ -73,6 +73,7 @@
     <!--<button id="add" type="button" onclick="loadDoc()">Submit score</button>-->
     
     <p id="demo"></p>
+    <p id="demo2"></p>
 
     <!--Script to give GET request to server
     <script>
