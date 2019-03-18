@@ -21,7 +21,7 @@ app.use(express.static('public'))
 
 
 app.get('/checkI', function (req, res) { 
-    res.send(req.params.score);
+    res.send(req.param('score'));
 })
 
 app.post('/checkI', function (req, res) {
