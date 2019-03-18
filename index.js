@@ -38,7 +38,7 @@ var writeBuff;
 
 	console.log(arrayOfObjects)
     
-    writeBuff = JSON.stringify(arrayOfObjects);
+    writeBuff = (arrayOfObjects);
 
 	fs.writeFile('./users.json', JSON.stringify(arrayOfObjects), 'utf-8', function(err) {
 		if (err) throw err
