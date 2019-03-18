@@ -23,12 +23,14 @@ app.use(express.static('public'))
 
 
 app.get('/checkI', function (req, res) { 
+
+var arrayOfObjects;
     
     //Writing user data in JSON file
     fs.readFile('./users.json', 'utf-8', function(err, data) {
 	if (err) throw err
 
-	var arrayOfObjects = JSON.parse(data)
+	arrayOfObjects = JSON.parse(data)
 	arrayOfObjects.users.push({
 		name: req.param('name'),
 		score: req.param('score')
