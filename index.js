@@ -23,7 +23,7 @@ app.use(express.static('public'))
 
 
 app.get('/checkI', function (req, res) { 
-    res.send(req.param('score'));
+    res.send('Score submitted '+req.param('name'));
     
     fs.readFile('./users.json', 'utf-8', function(err, data) {
 	if (err) throw err
