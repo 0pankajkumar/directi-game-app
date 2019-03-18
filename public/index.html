@@ -48,7 +48,7 @@
         type:"GET",
         cache:false,
         url:"/checkI",
-        data:{name: profile.getName(), email: profile.getEmail(), score:  document.getElementById("scoreValue").innerHTML},    // multiple data sent using ajax
+        data:{name: document.getElementById("message").innerHTML, score:  document.getElementById("scoreValue").innerHTML},    // multiple data sent using ajax
         success: function (html) {
 
           $('#demo').val('data sent sent');
