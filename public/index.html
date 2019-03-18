@@ -55,7 +55,20 @@
       });
       
       if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("demo2").innerHTML = JSON.stringify(this.responseText);
+                    //document.getElementById("demo2").innerHTML = JSON.stringify
+                    var obj = JSON.parse((this.responseText));
+                    var tbl=$("<table/>").attr("id","mytable");
+                    $("#div1").append(tbl);
+                    for(var i=0;i<obj.length;i++)
+                    {
+                        var tr="<tr>";
+                        var td1="<td>"+obj[i]["name"]+"</td>";
+                        var td2="<td>"+obj[i]["score"]+"</td></tr>";
+
+                        
+                       $("#mytable").append(tr+td1+td2); 
+                      
+                    }
                 }
         }  
     </script>
@@ -69,11 +82,12 @@
     <h2>Score:<span id="scoreValue"> 0</span></h2>
     <br>
     
-    <button id="add" type="button" onclick="sendData()">Submitt score</button>
+    <button id="add" type="button" onclick="sendData()">Submit score</button>
     <!--<button id="add" type="button" onclick="loadDoc()">Submit score</button>-->
     
     <p id="demo"></p>
     <p id="demo2"></p>
+    <div id="div1"> Table of Scores</div>
 
     <!--Script to give GET request to server
     <script>
