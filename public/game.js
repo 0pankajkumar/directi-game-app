@@ -217,7 +217,6 @@ class playGame extends Phaser.Scene{
             
             //Updating scores
             score++;
-            console.log(this.score);
             
             //this.data.set('score', this.score);
             text.setText(
