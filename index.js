@@ -45,7 +45,7 @@ var writeBuff;
 		console.log('Done!')
 	})
 })
-    res.send('Score submitted by '+req.param('name')+(arrayOfObjects));
+    res.send((arrayOfObjects));
     
 })
 
