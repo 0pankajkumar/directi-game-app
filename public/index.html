@@ -50,13 +50,30 @@
         url:"/checkI",
         data:{score: document.getElementById("scoreValue").innerHTML, name: document.getElementById("message").innerHTML},    // multiple data sent using ajax
         success: function( result ) {
+            var obj = JSON.parse(result);
+                   
+                    var tbl=$("<table/>").attr("id","mytable");
+            $("#div1").append(tbl);
+                    for(var i=0;i<obj.length;i++)
+                    {
+                        var tr="<tr>";
+                        var td1="<td>"+obj[i]["name"]+"</td>";
+                        var td2="<td>"+obj[i]["score"]+"</td></tr>";
+
+                        
+                       $("#mytable").append(tr+td1+td2);
+                    }
+        
+        
+        
             $( "#demo" ).html( "<strong>" + result + "</strong>" );
         }
       });
       
       if (this.readyState == 4 && this.status == 200) {
                     //document.getElementById("demo2").innerHTML = JSON.stringify
-                    var obj = JSON.parse((this.responseText));
+                    /*var obj = JSON.parse(this.responseText);
+                    console.log(this.responseText);
                     var tbl=$("<table/>").attr("id","mytable");
                     $("#div1").append(tbl);
                     for(var i=0;i<obj.length;i++)
@@ -68,7 +85,14 @@
                         
                        $("#mytable").append(tr+td1+td2); 
                       
-                    }
+                    }*/
+                    
+                    $.getJSON(JSON.parse(this.responseText), {}, function(data) {
+            var $ul = $('#ul').attr("id","ct");
+            $.each(data, function(idx, item){
+                $ul.append('<li style="color: ' + item.name + '">' + item.score  +'</li>')
+            })
+        });
                 }
         }  
     </script>
@@ -85,9 +109,17 @@
     <button id="add" type="button" onclick="sendData()">Submit score</button>
     <!--<button id="add" type="button" onclick="loadDoc()">Submit score</button>-->
     
-    <p id="demo"></p>
+    <br><br>
+    
+    <div id="div1"> Table of Scores
+    <table id="mytable"></table>
+    </div>
+    
+    <p id="demo">demo</p>
     <p id="demo2"></p>
-    <div id="div1"> Table of Scores</div>
+    
+
+    <ul id="ct"></ul>
 
     <!--Script to give GET request to server
     <script>

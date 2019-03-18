@@ -45,7 +45,7 @@ var writeBuff;
 		console.log('Done!')
 	})
 })
-    res.send((arrayOfObjects));
+    res.send(JSON.stringify(arrayOfObjects));
     
 })
 
