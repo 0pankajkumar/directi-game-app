@@ -24,7 +24,7 @@ app.use(express.static('public'))
 
 app.get('/checkI', function (req, res) { 
 
-var arrayOfObjects;
+var writeBuff;
     
     //Writing user data in JSON file
     fs.readFile('./users.json', 'utf-8', function(err, data) {
@@ -37,6 +37,8 @@ var arrayOfObjects;
 	})
 
 	console.log(arrayOfObjects)
+    
+    writeBuff = JSON.stringify(arrayOfObjects);
 
 	fs.writeFile('./users.json', JSON.stringify(arrayOfObjects), 'utf-8', function(err) {
 		if (err) throw err
