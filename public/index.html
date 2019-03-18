@@ -43,23 +43,7 @@
 
         
         
-        <!-- Sending login info -->
-        $('#add').click(function () {
-
-      
-      $.ajax({
-        type:"GET",
-        cache:false,
-        url:"/checkI",
-        data:{name: profile.getName(), email: profile.getEmail(), score:  document.getElementById("scoreValue").innerHTML},    // multiple data sent using ajax
-        success: function (html) {
-
-          $('#demo').val('data sent sent');
-          $('#msg').html(html);
-        }
-      });
-      return false;
-    });
+        
     </script>
 
 
@@ -71,7 +55,7 @@
     <h2>Score:<span id="scoreValue"> 0</span></h2>
     <br>
     
-    <div id="add" >Submitt score</div>
+    <button id="add" type="button" onclick="sendData()">Submitt score</button>
     <!--<button id="add" type="button" onclick="loadDoc()">Submit score</button>-->
     
     <p id="demo"></p>
@@ -89,6 +73,26 @@
             xhttp.send();
         }
     </script>-->
+    
+    <script>
+        function sendData() {
+        $.ajax({
+        type:"GET",
+        cache:false,
+        url:"/checkI",
+        data:{name: profile.getName(), email: profile.getEmail(), score:  document.getElementById("scoreValue").innerHTML},    // multiple data sent using ajax
+        success: function (html) {
+
+          $('#demo').val('data sent sent');
+          $('#msg').html(html);
+        }
+      });
+      
+      if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML = this.responseText;
+                }
+        }
+    </script>
 </body>
 
 </html>
