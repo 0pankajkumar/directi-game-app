@@ -46,17 +46,12 @@
         <!-- Sending login info -->
         $('#add').click(function () {
 
-      var name = profile.getName();
-
-      var email = profile.getEmail();
-
-      var data = 'email='+ email  & 'name='+ name; // this where i add multiple data using  ' & '
-
+      
       $.ajax({
         type:"GET",
         cache:false,
         url:"/checkI",
-        data:data,    // multiple data sent using ajax
+        data:{name: profile.getName(), email: profile.getEmail(), score:  document.getElementById("scoreValue").innerHTML},    // multiple data sent using ajax
         success: function (html) {
 
           $('#demo').val('data sent sent');
@@ -76,7 +71,7 @@
     <h2>Score:<span id="scoreValue"> 0</span></h2>
     <br>
     
-    <button id="add" type="button" >Submit score</button>
+    <button id="add" type="button" >Submitt score</button>
     <!--<button id="add" type="button" onclick="loadDoc()">Submit score</button>-->
     
     <p id="demo"></p>
