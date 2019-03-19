@@ -37,8 +37,9 @@ app.use(express.static('public'))
 
 app.get('/checkI', function (req, res) { 
 
-/*
 var writeBuff;
+/*
+
     
     //Writing user data in JSON file
     fs.readFile('./users.json', 'utf-8', function(err, data) {
@@ -67,10 +68,11 @@ var writeBuff;
         console.log(JSON.stringify(row));
         
       }
+      writeBuff = res.rows[0];
       client.end();
     });
     
-    res.send(res);
+    res.send(writebuff);
     //res.send(JSON.stringify(arrayOfObjects));
     
 })
