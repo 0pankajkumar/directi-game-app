@@ -52,7 +52,49 @@
         data:{email: document.getElementById("youremail").innerHTML, name: document.getElementById("message").innerHTML, score: document.getElementById("scoreValue").innerHTML},    // multiple data sent using ajax
         success: function( result ) {
             
-        
+            var obj = JSON.parse(result);
+            var columns = addAllColumnHeaders(obj);
+ 
+             for (var i = 0 ; i < obj.length ; i++) {
+                 var row$ = $('<tr/>');
+                 for (var colIndex = 0 ; colIndex < columns.length ; colIndex++) {
+                     var cellValue = myList[i][columns[colIndex]];
+         
+                     if (cellValue == null) { cellValue = ""; }
+         
+                     row$.append($('<td/>').html(cellValue));
+                 }
+                 $("#excelDataTable").append(row$);
+             }
+             // Adds a header row to the table and returns the set of columns.
+             // Need to do union of keys from all records as some records may not contain
+             // all records
+             function addAllColumnHeaders(obj)
+             {
+                 var columnSet = [];
+                 var headerTr$ = $('<tr/>');
+             
+                 for (var i = 0 ; i < obj.length ; i++) {
+                     var rowHash = myList[i];
+                     for (var key in rowHash) {
+                         if ($.inArray(key, columnSet) == -1){
+                             columnSet.push(key);
+                             headerTr$.append($('<th/>').html(key));
+                         }
+                     }
+                 }
+                 $("#excelDataTable").append(headerTr$);
+             
+                 return columnSet;
+             }
+                        
+            
+            
+            
+            
+            
+            
+            
         
             $( "#demo2" ).html( "<strong>" + (result) +"</strong>" );
             
@@ -103,6 +145,11 @@
     
     <p id="demo">demo</p>
     <p id="demo2"></p>
+    
+    <table id="excelDataTable" border="1">
+    </table>
+
+    
     
 
     <ul id="ct"></ul>
