@@ -61,11 +61,13 @@ var writeBuff;
         client.connect();
         //postgres connected
         
+        var a = req.param('email');
+        var b = req.param('name');
+        var c = req.param('score');
         
         
         
-        
-        client.query("INSERT INTO public.topscore(email,name,score) VALUES ('"+req.param('email')+"','"+req.param('name')+"',"+req.param('score')");", (err, response) => {
+        client.query("INSERT INTO public.topscore(email,name,score) VALUES ('"+a+"','"+b+"',"+c");", (err, response) => {
         if (err) throw err;
           
           //client.end();
