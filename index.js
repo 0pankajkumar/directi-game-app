@@ -78,26 +78,18 @@ var writeBuff;
             //res.end();
         });
         
-        client.end();
-        //Connecting to postgres on heroku
-        const { Client2 } = require('pg');
-        const client2 = new Client2({
-          connectionString: process.env.DATABASE_URL,
-          ssl: true,
-        });
-        client2.connect();
-        //postgres connected
+        
 
         //res.writeHead(200, {'Content-Type': 'text/plain'});
         
-        client2.query('select name,max(score) from public.topscore group by email,name;', (err, response2) => {
+        client.query('select name,max(score) from public.topscore group by email,name;', (err, response2) => {
         if (err) throw err;
           for (let row of response2.rows) {
             console.log(JSON.stringify(row));
             //res.write(JSON.stringify(row) + "\n");
           }
           
-          client2.end();
+          
           //res.status(200).send(JSON.stringify(response2));
           res.send(JSON.stringify(response2.rows));
           
@@ -105,7 +97,7 @@ var writeBuff;
             //res.end();
         });
         
-        
+        client.end();
         
         
         
