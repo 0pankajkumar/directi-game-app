@@ -62,6 +62,19 @@ var writeBuff;
         //postgres connected
         
         
+        
+        
+        client.query("INSERT INTO topscore(email,name,score) VALUES ('example2@email.com','another name', 5);", (err, response) => {
+        if (err) throw err;
+          
+          client.end();
+          
+          
+            
+            //res.end();
+        });
+        
+        
 
         //res.writeHead(200, {'Content-Type': 'text/plain'});
         
