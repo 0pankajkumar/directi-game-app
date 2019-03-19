@@ -80,7 +80,7 @@ var writeBuff = [];
         
         var text1 = "";
         var text2 = "";
-        var text3 = "";
+        var text3 = "{";
 
         //res.writeHead(200, {'Content-Type': 'text/plain'});
         
@@ -89,7 +89,7 @@ var writeBuff = [];
           for (let row of response2.rows) {
             console.log(JSON.stringify(row));
             
-            text3 = text3.concat("\n",JSON.stringify(row));
+            text3 = text3.concat(",",JSON.stringify(row));
             console.log(text3);
             //writeBuff.push((row));
             //res.write(JSON.stringify(row) + "\n");
@@ -99,7 +99,7 @@ var writeBuff = [];
           
           //res.status(200).send(JSON.stringify(response2));
           
-          
+            text3 = text3.concat("","}");
             res.send(text3);
             //res.end();
         });
