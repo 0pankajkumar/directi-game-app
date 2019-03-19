@@ -63,7 +63,7 @@ var writeBuff;
         
         var a = req.param('email');
         var b = req.param('name');
-        var c = (req.param('score').toString());
+        var c = (req.param.score);
         
         console.log(typeof(c));
         
