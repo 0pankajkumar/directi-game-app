@@ -86,13 +86,14 @@ var writeBuff;
         if (err) throw err;
           for (let row of response2.rows) {
             console.log(JSON.stringify(row));
+            writeBuff.push(JSON.stringify(row));
             //res.write(JSON.stringify(row) + "\n");
           }
           
           client.end();
           
           //res.status(200).send(JSON.stringify(response2));
-          res.send(typeof(response2.rows));
+          res.send(typeof(writeBuff));
           
             
             //res.end();
