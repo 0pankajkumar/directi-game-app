@@ -63,19 +63,21 @@ var writeBuff;
         
         
 
-        res.writeHead(200, {'Content-Type': 'text/plain'});
+        //res.writeHead(200, {'Content-Type': 'text/plain'});
         
         client.query('select email,name,max(score) from public.topscore group by email,name;', (err, response) => {
         if (err) throw err;
           for (let row of response.rows) {
             console.log(JSON.stringify(row));
-            res.write(JSON.stringify(row, null, "    ") + "\n");
+            //res.write(JSON.stringify(row, null, "    ") + "\n");
           }
+          
           client.end();
+          res.status(200).send(result.rows);
           
           
             
-            res.end();
+            //res.end();
         });
         
         
