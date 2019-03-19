@@ -69,11 +69,11 @@ var writeBuff;
         console.log(JSON.stringify(row));
         console.log(typeof(row));
       }
-      //writeBuff = res.rows;
+      writeBuff = res.rows;
       client.end();
     });
     
-    res.send("No error");
+    res.send(writeBuff);
     //res.send(JSON.stringify(arrayOfObjects));
     
 })
