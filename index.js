@@ -100,12 +100,12 @@ var writeBuff = [];
           //res.status(200).send(JSON.stringify(response2));
           
           
-            
+            res.send("$$" + text3);
             //res.end();
         });
         
         
-        res.send("$$" + text3);
+        
         
   
     //res.send("How shall I send data to client?");
