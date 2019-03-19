@@ -64,15 +64,16 @@ var writeBuff;
 
     client.query('select email,name,max(score) from topscore group by email,name;', (err, res) => {
       //if (err) throw err;
-      for (let row of res.rows) {
+      var row;
+      for (row of res.rows) {
         console.log(JSON.stringify(row));
         console.log(typeof(row));
       }
-      //writeBuff = res.rows[0];
+      writeBuff = res.rows;
       client.end();
     });
     
-    //res.send(writebuff);
+    res.send(writebuff);
     //res.send(JSON.stringify(arrayOfObjects));
     
 })
