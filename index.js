@@ -65,10 +65,12 @@ var writeBuff;
       if (err) throw err;
       for (let row of res.rows) {
         console.log(JSON.stringify(row));
-        res.send(JSON.stringify(row));
+        
       }
       client.end();
     });
+    
+    res.send(res);
     //res.send(JSON.stringify(arrayOfObjects));
     
 })
