@@ -51,20 +51,7 @@
         url:"/insertI",
         data:{email: document.getElementById("youremail").innerHTML, name: document.getElementById("message").innerHTML}, score: document.getElementById("scoreValue").innerHTML,    // multiple data sent using ajax
         success: function( result ) {
-            var obj = JSON.parse(result);
-                   
-                    var tbl=$("<table/>").attr("id","mytable");
-            $("#div1").append(tbl);
-                    for(var i=0;i<obj.length;i++)
-                    {
-                        var tr="<tr>";
-                        var td1="<td>"+obj[i]["name"]+"</td>";
-                        var td2="<td>"+obj[i]["score"]+"</td></tr>";
-
-                        
-                       $("#mytable").append(tr+td1+td2);
-                    }
-        
+            
         
         
             $( "#demo2" ).html( "<strong> Oops1</strong>" );
