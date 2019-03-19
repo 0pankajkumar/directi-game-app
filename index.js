@@ -37,6 +37,7 @@ app.use(express.static('public'))
 
 app.get('/checkI', function (req, res) { 
 
+/*
 var writeBuff;
     
     //Writing user data in JSON file
@@ -58,6 +59,7 @@ var writeBuff;
 		console.log('Done!')
 	})
 })
+*/
 
     client.query('SELECT * FROM public.topscore;', (err, res) => {
       if (err) throw err;
