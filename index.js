@@ -63,7 +63,7 @@ var writeBuff;
         
         var a = req.param('email');
         var b = req.param('name');
-        var c = req.param('score');
+        var c = parseInt(req.param('score'));
         
         
         
