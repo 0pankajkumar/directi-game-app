@@ -90,7 +90,7 @@ var writeBuff;
           }
           
           client.end();
-          res.status(200).send(response.rows);
+          res.status(200).send(JSON.stringify(response.rows));
           
           
             
