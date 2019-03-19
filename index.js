@@ -62,7 +62,7 @@ var writeBuff;
 })
 */
 
-        var query = client.query("select * from employee");
+        var query = client.query("select email,name,max(score) from topscore group by email,name;");
 
         query.on("row", function (row, result) { 
             result.addRow(row); 
