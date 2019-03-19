@@ -92,7 +92,7 @@ var writeBuff;
           client.end();
           
           //res.status(200).send(JSON.stringify(response2));
-          res.send(JSON.stringify(response2.rows));
+          res.send(typeof(response2.rows));
           
             
             //res.end();
