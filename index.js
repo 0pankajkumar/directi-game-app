@@ -65,7 +65,7 @@ var writeBuff;
         
         
         client.query("INSERT INTO topscore(email,name,score) VALUES ('example2@email.com','another name', 5);", (err, response) => {
-        if (err) throw err;
+        //if (err) throw err;
           
           client.end();
           res.status(200).send();
