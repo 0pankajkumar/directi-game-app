@@ -66,7 +66,7 @@
         
         
         
-            $( "#demo" ).html( "<strong>" + result + "</strong>" );
+            $( "#demo" ).html( "<strong>" + Oops + "</strong>" );
         }
       });
       
@@ -87,12 +87,7 @@
                       
                     }*/
                     
-                    $.getJSON(JSON.parse(this.responseText), {}, function(data) {
-            var $ul = $('#ul').attr("id","ct");
-            $.each(data, function(idx, item){
-                $ul.append('<li style="color: ' + item.name + '">' + item.score  +'</li>')
-            })
-        });
+           
                 }
         }  
     </script>
@@ -103,7 +98,7 @@
     
     
     <br><br><br><br>
-    <h1>Your Score: <span id="scoreValue"> 0</span></h1>
+    <h1>Your Score: <span id="scoreValue">0</span></h1>
     <br>
     
     <button id="add" type="button" onclick="sendData()">Submit score</button>
@@ -115,7 +110,7 @@
     <table id="mytable"></table>
     </div>
     
-    <p id="demo"></p>
+    <p id="demo">demo</p>
     <p id="demo2"></p>
     
 

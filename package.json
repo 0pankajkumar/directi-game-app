@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/805bluebell/directi-game-app#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "pg": "^7.9.0"
   }
 }

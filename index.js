@@ -8,6 +8,19 @@ const router = express.Router();
 
 var fs = require('fs')
 
+//Connecting to postgres on heroku
+const { Client } = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+
+client.connect();
+//postgres connected
+
+
+
 router.get('/index.html',function(req,res){
   res.sendFile(path.join(__dirname+'/public/index.html'));
   //__dirname : It will resolve to your project folder.
@@ -45,7 +58,16 @@ var writeBuff;
 		console.log('Done!')
 	})
 })
-    res.send(JSON.stringify(arrayOfObjects));
+
+    client.query('SELECT * FROM public.topscore;', (err, res) => {
+      if (err) throw err;
+      for (let row of res.rows) {
+        console.log(JSON.stringify(row));
+        res.send(JSON.stringify(row));
+      }
+      client.end();
+    });
+    //res.send(JSON.stringify(arrayOfObjects));
     
 })
 
