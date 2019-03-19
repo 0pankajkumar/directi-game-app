@@ -107,22 +107,7 @@ var writeBuff = [];
         
         res.send("Lets do it");
         
-        
-/*
-        var query = client.query("select email,name,max(score) from topscore group by email,name;");
-
-        query.on("row", function (row, result) { 
-            result.addRow(row); 
-        });
-
-        query.on("end", function (result) {          
-            client.end();
-            res.writeHead(200, {'Content-Type': 'text/plain'});
-            res.write(JSON.stringify(result.rows, null, "    ") + "\n");
-            res.end();  
-        });
-    
-*/
+  
     //res.send("How shall I send data to client?");
     //res.send(JSON.stringify(arrayOfObjects));
     
