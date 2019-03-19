@@ -66,13 +66,13 @@ var writeBuff;
       //if (err) throw err;
       for (let row of res.rows) {
         console.log(JSON.stringify(row));
-        
+        console.log(typeof(row));
       }
-      writeBuff = res.rows[0];
+      //writeBuff = res.rows[0];
       client.end();
     });
     
-    res.send(writebuff);
+    //res.send(writebuff);
     //res.send(JSON.stringify(arrayOfObjects));
     
 })
