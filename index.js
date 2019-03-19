@@ -63,17 +63,17 @@ var writeBuff;
 */
 
     client.query('select email,name,max(score) from topscore group by email,name;', (err, res) => {
-      //if (err) throw err;
+      if (err) throw err;
       var row;
       for (row of res.rows) {
         console.log(JSON.stringify(row));
         console.log(typeof(row));
       }
-      writeBuff = res.rows;
+      //writeBuff = res.rows;
       client.end();
     });
     
-    res.send(writebuff);
+    res.send("No error");
     //res.send(JSON.stringify(arrayOfObjects));
     
 })
