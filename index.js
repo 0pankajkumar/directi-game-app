@@ -68,6 +68,7 @@ var writeBuff;
         if (err) throw err;
           
           client.end();
+          res.status(200).send();
           
           
             
