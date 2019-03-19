@@ -12,7 +12,7 @@ const router = express.Router();
 const { Client } = require('pg');
 
 const client = new Client({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL || postgres://cgkjafqthibnwj:3cbe5e90f1632d099116b6fbb8cf4891d61f8b3b6fd97d2ee3491c8d637120aa@ec2-50-19-109-120.compute-1.amazonaws.com:5432/d53ttjci9p0oj9,
   ssl: true,
 });
 
@@ -62,18 +62,20 @@ var writeBuff;
 })
 */
 
-    client.query('select email,name,max(score) from topscore group by email,name;', (error, response) => {
-      if (error) throw error;
-      var row;
-      for (row of response.rows) {
-        console.log(JSON.stringify(row));
-        console.log(typeof(row));
-      }
-      writeBuff = response.rows;
-      client.end();
-    });
+        var query = client.query("select * from employee");
+
+        query.on("row", function (row, result) { 
+            result.addRow(row); 
+        });
+
+        query.on("end", function (result) {          
+            client.end();
+            res.writeHead(200, {'Content-Type': 'text/plain'});
+            res.write(JSON.stringify(result.rows, null, "    ") + "\n");
+            res.end();  
+        });
     
-    res.send("How shall I send data to client?");
+    //res.send("How shall I send data to client?");
     //res.send(JSON.stringify(arrayOfObjects));
     
 })
