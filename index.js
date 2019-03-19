@@ -8,16 +8,6 @@ const router = express.Router();
 
 //var fs = require('fs')
 
-//Connecting to postgres on heroku
-const { Client } = require('pg');
-
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
-});
-
-client.connect();
-//postgres connected
 
 
 
@@ -61,6 +51,18 @@ var writeBuff;
 	})
 })
 */
+
+        //Connecting to postgres on heroku
+        const { Client } = require('pg');
+        const client = new Client({
+          connectionString: process.env.DATABASE_URL,
+          ssl: true,
+        });
+        client.connect();
+        //postgres connected
+        
+        
+
         res.writeHead(200, {'Content-Type': 'text/plain'});
         
         client.query('select email,name,max(score) from public.topscore group by email,name;', (err, response) => {
