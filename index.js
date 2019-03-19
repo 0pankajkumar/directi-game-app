@@ -89,6 +89,7 @@ var writeBuff;
             //res.write(JSON.stringify(row) + "\n");
           }
           
+          client.end();
           
           //res.status(200).send(JSON.stringify(response2));
           res.send(JSON.stringify(response2.rows));
@@ -97,7 +98,7 @@ var writeBuff;
             //res.end();
         });
         
-        client.end();
+        
         
         
         
