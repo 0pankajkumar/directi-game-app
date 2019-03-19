@@ -73,7 +73,7 @@ var writeBuff;
           }
           
           client.end();
-          res.status(200).send(result.rows);
+          res.status(200).send(response.rows);
           
           
             
