@@ -90,7 +90,7 @@ var writeBuff = [];
             console.log(JSON.stringify(row));
             
             text3 = text3.concat("\n",JSON.stringify(row));
-            console.log(typeof(JSON.stringify(row)));
+            console.log(text3);
             //writeBuff.push((row));
             //res.write(JSON.stringify(row) + "\n");
           }
