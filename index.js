@@ -73,7 +73,7 @@ var writeBuff;
       client.end();
     });
     
-    res.send(JSON.stringify(writeBuff));
+    res.send("How shall I send data to client?");
     //res.send(JSON.stringify(arrayOfObjects));
     
 })
