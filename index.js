@@ -27,7 +27,7 @@ app.use(express.static('public'))
 
 app.get('/insertI', function (req, res) { 
 
-var writeBuff;
+var writeBuff = [];
 /*
 
     
