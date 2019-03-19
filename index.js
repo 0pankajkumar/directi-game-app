@@ -63,9 +63,9 @@ var writeBuff;
         
         var a = req.param('email');
         var b = req.param('name');
-        var c = (req.param('score'));
+        var c = (req.param('score'))
         
-        
+        console.log(typeof(c));
         
         client.query("INSERT INTO public.topscore(email,name,score) VALUES ($1, $2, $3);", [a,b,c], (err, response) => {
         if (err) throw err;
