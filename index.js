@@ -67,7 +67,7 @@ var writeBuff;
         
         
         
-        client.query("INSERT INTO public.topscore(email,name,score) VALUES ($a, $b, $c);", [a,b,c], (err, response) => {
+        client.query("INSERT INTO public.topscore(email,name,score) VALUES ($1, $2, $3);", [a,b,c], (err, response) => {
         if (err) throw err;
           
           //client.end();
