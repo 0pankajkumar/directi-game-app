@@ -62,18 +62,18 @@ var writeBuff;
 })
 */
 
-    client.query('select email,name,max(score) from topscore group by email,name;', (err, res) => {
-      if (err) throw err;
+    client.query('select email,name,max(score) from topscore group by email,name;', (error, response) => {
+      if (error) throw error;
       var row;
-      for (row of res.rows) {
+      for (row of response.rows) {
         console.log(JSON.stringify(row));
         console.log(typeof(row));
       }
-      writeBuff = res.rows;
+      writeBuff = response.rows;
       client.end();
     });
     
-    res.send(writeBuff);
+    res.send(JSON.stringify(writeBuff));
     //res.send(JSON.stringify(arrayOfObjects));
     
 })
