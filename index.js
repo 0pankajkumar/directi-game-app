@@ -65,7 +65,7 @@ var writeBuff = [];
         var b = req.param('name');
         var c = (req.query.score);
         
-        console.log(typeof(c));
+        
         
         client.query("INSERT INTO public.topscore(email,name,score) VALUES ($1, $2, $3);", [a,b,c], (err, response) => {
         if (err) throw err;
@@ -86,14 +86,16 @@ var writeBuff = [];
         if (err) throw err;
           for (let row of response2.rows) {
             console.log(JSON.stringify(row));
-            writeBuff.push((row));
+            
+            console.log(typeof(row));
+            //writeBuff.push((row));
             //res.write(JSON.stringify(row) + "\n");
           }
           
           client.end();
           
           //res.status(200).send(JSON.stringify(response2));
-          res.send(typeof(writeBuff));
+          res.send("Lets do it");
           
             
             //res.end();
