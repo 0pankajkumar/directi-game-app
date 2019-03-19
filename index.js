@@ -61,15 +61,18 @@ var writeBuff;
 	})
 })
 */
-        client.query('select email,name,max(score) from public.topscore group by email,name;', (err, res) => {
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        
+        client.query('select email,name,max(score) from public.topscore group by email,name;', (err, response) => {
         if (err) throw err;
-          for (let row of res.rows) {
+          for (let row of response.rows) {
             console.log(JSON.stringify(row));
+            res.write(JSON.stringify(row, null, "    ") + "\n");
           }
           client.end();
           
-          res.writeHead(200, {'Content-Type': 'text/plain'});
-            res.write(JSON.stringify(res.rows, null, "    ") + "\n");
+          
+            
             res.end();
         });
         
