@@ -6,7 +6,7 @@ const port = process.env.PORT || 5000
 const path = require('path');
 const router = express.Router();
 
-var fs = require('fs')
+//var fs = require('fs')
 
 //Connecting to postgres on heroku
 const { Client } = require('pg');
