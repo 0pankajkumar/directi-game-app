@@ -100,7 +100,7 @@ var writeBuff = [];
           //res.status(200).send(JSON.stringify(response2));
           
           
-            res.send("$$" + text3);
+            res.send(text3);
             //res.end();
         });
         
