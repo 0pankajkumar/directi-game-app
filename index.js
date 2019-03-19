@@ -35,7 +35,7 @@ app.use(express.static('public'))
 
 
 
-app.get('/checkI', function (req, res) { 
+app.get('/insertI', function (req, res) { 
 
 var writeBuff;
 /*
