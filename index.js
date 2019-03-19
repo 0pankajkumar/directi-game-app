@@ -86,7 +86,7 @@ var writeBuff;
         if (err) throw err;
           for (let row of response2.rows) {
             console.log(JSON.stringify(row));
-            res.write(JSON.stringify(row, null, "    ") + "\n");
+            res.write(JSON.stringify(row) + "\n");
           }
           
           client.end();
