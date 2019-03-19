@@ -90,8 +90,8 @@ var writeBuff;
           }
           
           client.end();
-          res.status(200).send(JSON.stringify(response2));
-          
+          //res.status(200).send(JSON.stringify(response2));
+          res.send(JSON.stringify(response2));
           
             
             //res.end();
