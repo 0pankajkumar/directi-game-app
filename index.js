@@ -82,7 +82,7 @@ var writeBuff;
 
         //res.writeHead(200, {'Content-Type': 'text/plain'});
         
-        client.query('select email,name,max(score) from public.topscore group by email,name;', (err, response2) => {
+        client.query('select name,max(score) from public.topscore group by email,name;', (err, response2) => {
         if (err) throw err;
           for (let row of response2.rows) {
             console.log(JSON.stringify(row));
@@ -91,7 +91,7 @@ var writeBuff;
           
           client.end();
           //res.status(200).send(JSON.stringify(response2));
-          res.send(JSON.stringify(response2));
+          res.send(JSON.stringify(response2.rows));
           
             
             //res.end();
