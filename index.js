@@ -89,7 +89,7 @@ var writeBuff = [];
           for (let row of response2.rows) {
             console.log(JSON.stringify(row));
             
-            text3 = text3.concat("",JSON.stringify(row));
+            text3 = text3.concat("\n",JSON.stringify(row));
             console.log(typeof(JSON.stringify(row)));
             //writeBuff.push((row));
             //res.write(JSON.stringify(row) + "\n");
@@ -105,7 +105,7 @@ var writeBuff = [];
         });
         
         
-        res.send("Lets do it");
+        res.send(text3);
         
   
     //res.send("How shall I send data to client?");
