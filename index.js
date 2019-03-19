@@ -105,7 +105,7 @@ var writeBuff = [];
         });
         
         
-        res.send(text3);
+        res.send("$$" + text3);
         
   
     //res.send("How shall I send data to client?");
