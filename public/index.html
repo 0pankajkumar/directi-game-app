@@ -48,7 +48,7 @@
         type:"GET",
         cache:false,
         url:"/insertI",
-        data:{score: document.getElementById("scoreValue").innerHTML, name: document.getElementById("message").innerHTML},    // multiple data sent using ajax
+        data:{email: profile.getEmail(), name: document.getElementById("message").innerHTML}, score: document.getElementById("scoreValue").innerHTML,    // multiple data sent using ajax
         success: function( result ) {
             var obj = JSON.parse(result);
                    
@@ -66,7 +66,7 @@
         
         
         
-            $( "#demo" ).html( "<strong> Oops1</strong>" );
+            $( "#demo2" ).html( "<strong> Oops1</strong>" );
         }
       });
       
@@ -87,7 +87,7 @@
                       
                     }*/
                     
-                $( "#demo" ).html( "<strong> Oops2 </strong>" );
+                document.getElementById("demo").innerHTML = this.responseText;
                 }
         }  
     </script>
@@ -101,7 +101,7 @@
     <h1>Your Score: <span id="scoreValue">0</span></h1>
     <br>
     
-    <button id="add" type="button" onclick="loadDoc()">Submit score</button>
+    <button id="add" type="button" onclick="sendData()">Submit score</button>
     <!--<button id="add" type="button" onclick="loadDoc()">Submit score</button>-->
     
     <br><br>
