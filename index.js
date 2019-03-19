@@ -78,7 +78,9 @@ var writeBuff = [];
             //res.end();
         });
         
-        
+        var text1 = "";
+        var text2 = "";
+        var text3 = "";
 
         //res.writeHead(200, {'Content-Type': 'text/plain'});
         
@@ -87,6 +89,7 @@ var writeBuff = [];
           for (let row of response2.rows) {
             console.log(JSON.stringify(row));
             
+            text3 = text3.concat("",JSON.stringify(row));
             console.log(typeof(JSON.stringify(row)));
             //writeBuff.push((row));
             //res.write(JSON.stringify(row) + "\n");
@@ -95,14 +98,14 @@ var writeBuff = [];
           client.end();
           
           //res.status(200).send(JSON.stringify(response2));
-          res.send("Lets do it");
+          
           
             
             //res.end();
         });
         
         
-        
+        res.send("Lets do it");
         
         
 /*
