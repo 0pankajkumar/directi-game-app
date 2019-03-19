@@ -54,7 +54,7 @@
             
         
         
-            $( "#demo2" ).html( "<strong>" + parseJSON(result) +"</strong>" );
+            $( "#demo2" ).html( "<strong>" + JSON.parse(result) +"</strong>" );
             
             document.getElementById("demo").innerHTML = this.responseText;
         }
