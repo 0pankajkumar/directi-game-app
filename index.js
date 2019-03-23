@@ -85,7 +85,7 @@ var writeBuff = [];
 
         //res.writeHead(200, {'Content-Type': 'text/plain'});
         
-        client.query('select name,max(score) from public.topscore group by email,name;', (err, response2) => {
+        client.query('select tb1.* from (select name,max(score) from public.topscore group by email,name) as tb1 order by max desc;', (err, response2) => {
         if (err) throw err;
           for (let row of response2.rows) {
             console.log(JSON.stringify(row));
